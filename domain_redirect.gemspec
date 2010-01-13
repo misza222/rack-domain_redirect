@@ -5,12 +5,14 @@
 
 Gem::Specification.new do |s|
   s.name = %q{domain_redirect}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["misza"]
-  s.date = %q{2010-01-12}
-  s.description = %q{Redirects to domain}
+  s.authors = ["Michal Pawlowski"]
+  s.date = %q{2010-01-13}
+  s.description = %q{Rack::DomainRedirect is a tiny rack middleware for redirecting to the desired
+domain. If user request's the service from domain other than configured it
+redirects to the first domain on the configuration list.}
   s.email = %q{misza222@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -23,14 +25,15 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
-     "lib/domain_redirect.rb",
+     "domain_redirect.gemspec",
+     "lib/rack/domain_redirect.rb",
      "test/test_domain_redirect.rb"
   ]
   s.homepage = %q{http://github.com/misza222/domain_redirect}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
-  s.summary = %q{Redirects}
+  s.summary = %q{Redirects to the desired domain.}
   s.test_files = [
     "test/test_domain_redirect.rb"
   ]
@@ -40,9 +43,18 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+      s.add_development_dependency(%q<shoulda>, [">= 0"])
+      s.add_development_dependency(%q<rack-test>, [">= 0"])
+      s.add_runtime_dependency(%q<rack>, [">= 1.0"])
     else
+      s.add_dependency(%q<shoulda>, [">= 0"])
+      s.add_dependency(%q<rack-test>, [">= 0"])
+      s.add_dependency(%q<rack>, [">= 1.0"])
     end
   else
+    s.add_dependency(%q<shoulda>, [">= 0"])
+    s.add_dependency(%q<rack-test>, [">= 0"])
+    s.add_dependency(%q<rack>, [">= 1.0"])
   end
 end
 

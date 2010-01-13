@@ -1,19 +1,20 @@
 module Rack
   
-  # 
+  # Automatically redirects to the configurable domain
   #
+  # If request comes from other than specified domains it redirects to the first
+  # domain from the list
   class DomainRedirect
     
     def initialize(app, hosts = [])
       @app = app
       @hosts = hosts
-      @hosts[0] = 'www.google.com' if @hosts.empty?
     end
     
     def call(env)
       req = Rack::Request.new(env)
       
-      if @hosts.include?(req.host)
+      if @hosts.empty? or @hosts.include?(req.host)
         @app.call(env)
       else
         url = "http://#{@hosts[0]}"
