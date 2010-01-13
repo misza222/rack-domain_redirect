@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "domain_redirect"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Redirects}
+    gem.description = %Q{Redirects to domain}
     gem.email = "misza222@gmail.com"
     gem.homepage = "http://github.com/misza222/domain_redirect"
     gem.authors = ["misza"]
