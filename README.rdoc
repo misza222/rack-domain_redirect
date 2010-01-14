@@ -1,24 +1,31 @@
 = Rack::DomainRedirect
 
-- Code: http://github.com/misza222/domain_redirect
+- Code: http://github.com/misza222/rack-domain_redirect
+- Build: http://runcoderun.com/misza222/rack-domain_redirect
 
 == Description
 
-Rack::DomainRedirect is a tiny rack middleware for redirecting to the desired
-domain. If user request's the service from domain other than configured it
-redirects to the first domain on the configuration list.
+Rack::DomainRedirect is a tiny rack middleware for redirecting to the
+configurable domain. If user request's the service from domain other than that
+configured it redirects to the first domain on the configuration list. If no
+domain is configured it does noting and passes requests to another application
+in the chain.
 
 == Features
 
-* Configurable allowed domains
-* If not configured it degrades nicely and does nothing
-* Preserves port, path and query string
+* Configurable accepted domains,
+* if not configured it degrades nicely and does nothing,
+* preserves path and query string when redirecting.
 
 == Example
-
+  
+  # This example allows requests for example.com and localhost.
+  # If any other domain is requested it redirects to the first domain on the
+  # list - example.com preserving path and query string from the first request.
   require "rack/domain_redirect"
   
-  use Rack::DomainRedirect, ['example.com', 'another-example.com']
+  # This is how you use and configure Rack::DomainRedirect middleware
+  use Rack::DomainRedirect, ['example.com', 'localhost']
   
   run lambda { |env| [200, {'Content-Type' => 'text/plain'}, ['Hello world!']] }
 
@@ -26,7 +33,11 @@ redirects to the first domain on the configuration list.
 
 To install the latest release as a gem:
 
-  sudo gem install domain_redirect
+  sudo gem install rack-domain_redirect
+
+== Credits
+
+Many thanks to brynary for http://github.com/brynary/rack-test
 
 == Copyright
 

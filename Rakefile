@@ -4,17 +4,20 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "domain_redirect"
-    gem.summary = %Q{Redirects to the desired domain.}
-    gem.description = %Q{Rack::DomainRedirect is a tiny rack middleware for redirecting to the desired
-domain. If user request's the service from domain other than configured it
-redirects to the first domain on the configuration list.}
+    gem.name = "rack-domain_redirect"
+    gem.summary = %Q{Rack::DomainRedirect redirects to the configurable domain.}
+    gem.description = %Q{
+Rack::DomainRedirect is a tiny rack middleware for redirecting to the
+configurable domain. If user request's the service from domain other than that
+configured it redirects to the first domain on the configuration list. If no
+domain is configured it does noting and passes requests to another application
+in the chain.}
     gem.email = "misza222@gmail.com"
-    gem.homepage = "http://github.com/misza222/domain_redirect"
+    gem.homepage = "http://github.com/misza222/rack-domain_redirect"
     gem.authors = ["Michal Pawlowski"]
-    gem.add_development_dependency "shoulda", ">= 0"
-    gem.add_development_dependency "rack-test", ">= 0"
-    gem.add_dependency "rack", ">= 1.0"
+    gem.add_development_dependency "shoulda", ">= 2"
+    gem.add_development_dependency "rack-test", ">= 0.5"
+    gem.add_dependency "rack", ">= 1.1"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

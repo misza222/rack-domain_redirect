@@ -19,3 +19,6 @@ rdoc
 pkg
 
 ## PROJECT::SPECIFIC
+# As we are using jeweler we generate gemspec file automatically using
+# rake build
+*.gemspec
